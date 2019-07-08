@@ -4,23 +4,23 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateDomainsTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
+    public $table_name = 'domains';
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create($this->table_name, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->text('description')->default(null)->nullable(true);
+            $table->unsignedInteger('parent_id')->default(null)->nullable(true);
+            $table->integer('status')->default(0)->nullable(true);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists($this->table_name);
     }
 }

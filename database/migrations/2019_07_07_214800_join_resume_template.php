@@ -4,20 +4,20 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class JoinResumeTemplate extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
+    public $table_name = 'resume_template' ;
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create($this->table_name, function (Blueprint $table){
+            $table->bigIncrements('id');
+            $table->bigInteger('resume_id');
+            $table->bigInteger('template_id');
         });
     }
 
@@ -28,6 +28,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists($this->table_name);
     }
 }
