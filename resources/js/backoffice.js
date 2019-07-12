@@ -5,7 +5,6 @@
  */
 
 //require('jquery/dist/jquery.min');
-//require('jquery.easing/jquery.easing');
+require('jquery.easing/jquery.easing');
 require('bootstrap/dist/js/bootstrap');
 //require('chart.js/dist/Chart.min');
-//require('datatables.net-bs4/js/dataTables.bootstrap4.min');

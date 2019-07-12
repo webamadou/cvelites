@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::view('/app/{path?}','app');
+Route::redirect('/','/app');
 
 Route::middleware(['auth'])
     ->namespace('Admin')
