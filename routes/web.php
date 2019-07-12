@@ -14,3 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware(['auth'])
+    ->namespace('Admin')
+    ->prefix('admin')
+    ->group(function(){
+        Route::resource('/', 'HomeController');
+        Route::resource('/languages', 'LanguagesController');
+
+        Route::get('languagesList','DataTablesController@languagesList')->name('langListData');
+        Route::post('languageListFilter','DataTablesController@languagesListFilter')->name('langFilterData');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+//Route::get('products','DemoController@products');
+//Route::post('productList','DemoController@productList');
