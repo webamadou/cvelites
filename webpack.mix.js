@@ -13,4 +13,5 @@ const mix = require('laravel-mix');
 
 mix.react('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
-   .styles('resources/css/frontoffice.css', 'public/css/frontoffice.css');
+   .styles('resources/css/frontoffice.css', 'public/css/frontoffice.css')
+   .copyDirectory('resources/images', 'public/images');
