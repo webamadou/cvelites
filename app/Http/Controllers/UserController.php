@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use JWTAuth;
 use JWTAuthException;
 
@@ -35,6 +36,7 @@ class UserController extends Controller
         $user = \App\User::where('email', $request->email)->get()->first();
         if ($user && \Hash::check($request->password, $user->password)) // The passwords match...
         {
+            Auth::attempt($request->only('email','password'));
             $token = self::getToken($request->email, $request->password);
             $user->auth_token = $token;
             $user->save();
@@ -88,4 +90,15 @@ class UserController extends Controller
 
         return response()->json($response, 201);
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        $response = [
+            'success'=>true,
+            'data'=>[]
+        ];
+        return response()->json($response, 201);
+    }
+
 }

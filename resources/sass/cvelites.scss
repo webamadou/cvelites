@@ -1,0 +1,847 @@
+/**
+This scss is used to design the user's space
+That involve the cv builder user's profil and any other area that only connected users can access
+ */
+@import './fancy-range';
+.bg-dark {
+    background-color: #5a5c69 !important;
+}
+a.logo, a.logo:hover {
+    font-size: medium;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+.navbar {
+    position: relative;
+    z-index: 999;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0.1rem 1rem;
+    background: #07182c;
+    color: #fff;
+}
+
+.navbar > .container,
+.navbar > .container-fluid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
+.navbar-brand:hover, .navbar-brand:focus {
+    text-decoration: none;
+}
+
+.navbar-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    position: relative;
+    z-index: 99;
+}
+
+.navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+}
+
+.navbar-text {
+    display: inline-block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.navbar-collapse {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.35rem;
+}
+
+.navbar-toggler:hover, .navbar-toggler:focus {
+    text-decoration: none;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: no-repeat center center;
+    background-size: 100% 100%;
+}
+
+@media (max-width: 575.98px) {
+    .navbar-expand-sm > .container,
+    .navbar-expand-sm > .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 576px) {
+    .navbar-expand-sm {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+    .navbar-expand-sm .navbar-nav {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+    .navbar-expand-sm .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
+    .navbar-expand-sm .navbar-nav .nav-link {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+    }
+    .navbar-expand-sm > .container,
+    .navbar-expand-sm > .container-fluid {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+    .navbar-expand-sm .navbar-collapse {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    }
+    .navbar-expand-sm .navbar-toggler {
+        display: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .navbar-expand-md > .container,
+    .navbar-expand-md > .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-expand-md {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+    .navbar-expand-md .navbar-nav {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+    .navbar-expand-md .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
+    .navbar-expand-md .navbar-nav .nav-link {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+    }
+    .navbar-expand-md > .container,
+    .navbar-expand-md > .container-fluid {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+    .navbar-expand-md .navbar-collapse {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    }
+    .navbar-expand-md .navbar-toggler {
+        display: none;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-expand-lg > .container,
+    .navbar-expand-lg > .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+    .navbar-expand-lg .navbar-nav {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+    }
+    .navbar-expand-lg > .container,
+    .navbar-expand-lg > .container-fluid {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+    .navbar-expand-lg .navbar-collapse {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    }
+    .navbar-expand-lg .navbar-toggler {
+        display: none;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .navbar-expand-xl > .container,
+    .navbar-expand-xl > .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar-expand-xl {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+    .navbar-expand-xl .navbar-nav {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+    .navbar-expand-xl .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
+    .navbar-expand-xl .navbar-nav .nav-link {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+    }
+    .navbar-expand-xl > .container,
+    .navbar-expand-xl > .container-fluid {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+    .navbar-expand-xl .navbar-collapse {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    }
+    .navbar-expand-xl .navbar-toggler {
+        display: none;
+    }
+}
+
+.navbar-expand {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+.navbar-expand > .container,
+.navbar-expand > .container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.navbar-expand .navbar-nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.navbar-expand .navbar-nav .dropdown-menu {
+    position: absolute;
+}
+
+.navbar-expand .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.navbar-expand > .container,
+.navbar-expand > .container-fluid {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+.navbar-expand .navbar-collapse {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+}
+
+.navbar-expand .navbar-toggler {
+    display: none;
+}
+
+.navbar-light .navbar-brand {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar-light .navbar-nav .nav-link.disabled {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-light .navbar-toggler {
+    color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-light .navbar-text {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-light .navbar-text a {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-light .navbar-text a:hover, .navbar-light .navbar-text a:focus {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-dark .navbar-brand {
+    color: #fff;
+}
+
+.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
+    color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.navbar-dark .navbar-nav .nav-link.disabled {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #fff;
+}
+
+.navbar-dark .navbar-toggler {
+    color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-dark .navbar-text {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-dark .navbar-text a {
+    color: #fff;
+}
+
+.navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
+    color: #fff;
+}
+.container-fluid.builder-container{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #d2d2d287;
+    position: relative;
+    z-index: 9;
+}
+.container.resume-wrapper {
+    background: #fff;
+    color: #000;
+    font-size: 1rem;
+    font-weight: normal;
+    height: 297mm;
+}
+
+//each CV has a model that will set the disposition of the element. Model are prefixed with mod-
+.mod-saly{
+    .header-wrapper {
+        padding: 1rem;
+        padding-top: 2rem;
+        position: relative;
+        height: 248.66px;
+        overflow: hidden;
+        margin: 0;
+        color: #000;
+        .avatar {
+            max-height: inherit;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            img{
+                display: block;
+                width: 8rem;
+                min-height: 8rem;
+                border-radius: 50%;
+            }
+        }
+        .name-profession {
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            justify-content: center;
+            margin-bottom: 15px;
+            h1{
+                height: 5rem;
+                overflow: hidden;
+                line-height: 1.1;
+                margin: 0;
+            }
+            h5{
+                margin: 0;
+            }
+        }
+        .contacts {
+            position: relative;
+            text-align: right;
+            ul{
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                li{
+                    padding: 4px 0;
+                    .fa{margin-left: 7px}
+                }
+            }
+        }
+        .content-wrapper {
+            padding: 0;
+            margin: 0 -15px;
+            position: relative;
+        }
+    }
+    .l-column {
+        padding-left: 0;
+    }
+    .r-column {
+        padding-right: 0;
+    }
+    .cv-bloc{margin-top: 2rem;}
+    .cv-bloc .bloc-title {
+        border-bottom: 2px solid;
+        padding-left: 45px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .bloc-content{
+        margin-left: 35px;
+        padding: 1rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .experiences-blocs {
+        .experience {
+            margin: 0;
+            padding: 0 0 0 1rem;
+            border-left: 3px solid;
+            position: relative;
+            &:before {
+                content: '';
+                display: block;
+                border: 4px solid;
+                width: 1.3rem;
+                height: 1.3rem;
+                position: absolute;
+                left: -12px;
+                top: 0;
+                border-radius: 50%;
+            }
+            ul.date-place {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: space-between;
+                li {padding: 0;}
+            }
+            h4 {
+                color: #2f2f2f;
+                margin-bottom: 0px;
+            }
+            .company-description {
+                line-height: 1.2;
+                position: relative;
+                padding: 1rem 0 .2rem;
+            }
+            .experience-tasks {
+                padding: 0.4rem 0;
+                ul{
+                    list-style: none;
+                    margin: 0;
+                    font-size: small;
+                    padding: 0;
+                    li{
+                        position: relative;
+                        padding-left: 15px;
+                        &:before {
+                            content: '';
+                            display: inline-block;
+                            width: 4px;
+                            height: 1px;
+                            border: 1px solid;
+                            position: absolute;
+                            left: 0;
+                            top: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .educations-wrapper{
+        .educations-blocs{
+            padding: 1rem 0 0;
+            ul{position: relative;
+                line-height: 1;
+            }
+        }
+    }
+    .skills-wrapper{position: relative;
+        .skills-blocs ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            width: 100%;
+            overflow: hidden;
+            li{
+                padding: .4rem .6rem;
+                margin: .2rem;
+                border-radius: 9px;
+                border: 1px solid;
+            }
+        }
+    }
+    .realisations-wrapper{
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .languages-wrapper{
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            li {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+        .lang-level {
+            position: relative;
+            width: 60%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .level {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                border: 2px solid;
+                border-radius: 50%;
+            }
+        }
+    }
+    .interests-wrapper {
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 0;
+            overflow: hidden;
+            li {
+                margin: .4rem;
+                padding: .2rem .6rem;
+                border: 2px solid;
+                border-radius: 6px;
+            }
+        }
+    }
+}
+//All classes tat will deal with colors are set in this section. They all start with tm as in theme
+//They are supposed to set font color, background, border color...
+.tm-dark{
+    h1, h2, h3, h4, h5, h6{
+        color: #000;
+    }
+    .name-profession h5{
+        color: #656565;
+    }
+    .experience {
+        border-left-color: #000;
+        &:before {
+            border-color: #000;
+            background: #fff;
+        }
+        h3{ color: #000000;}
+        h4{color: #2f2f2f;}
+        .company-description {
+            color: #656565;
+        }
+        .experience-tasks{background: #fdfdfd;
+            ul{
+                li{
+                    &:before {
+                        border-color: #000;
+                    }
+                }
+            }
+        }
+    }
+    .skills-wrapper{
+        li{
+            border-color: #000;
+            background: #000;
+            color: #fff;
+        }
+    }
+    .interests-wrapper {
+        ul {
+            li {
+                border-color: #656565;
+                color: #000;
+                font-size: .8rem;
+            }
+        }
+    }
+    .languages-wrapper{
+        .lang-level {
+            background: #fff;
+            .level {
+                border-color: #000;
+                &.active{
+                    background: #000;
+                }
+            }
+        }
+    }
+}
+//All class that will managed font police are st bellow. They all start with fp
+.fp-roboto{
+    font-family: 'Roboto', sans-serif;
+    h1, h2, h3, h4, h5, h6{
+        font-family: 'Roboto', sans-serif;
+        text-transform: none;
+    }
+    h1{
+        font-size: 2.4rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+    h5{
+        font-size: x-large;
+        font-weight: normal;
+        letter-spacing: 1px;
+    }
+    .presentation {
+        font-size: medium;
+        font-weight: 100;
+        line-height: 1.5;
+    }
+    .cv-bloc .bloc-title{
+        font-family: 'Roboto', sans-serif;
+    }
+    h3 {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        margin: 0;
+        line-height: 1.4;
+    }
+    h4 {
+        font-size: large;
+        font-weight: 400;
+    }
+    ul.date-place {
+        font-size: .9rem;
+        font-weight: 300;
+    }
+    .company-description{
+        font-size: 0.8rem;
+        line-height: 1.4;
+        font-weight: 100;
+        letter-spacing: 1px;
+        text-align: justify;
+        font-style: italic;
+    }
+    .educations-wrapper{
+        h3{
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+        h4{
+            font-size: 1.2rem;
+            margin-bottom: .3rem;
+        }
+        .date-place {
+            font-size: .9rem;
+            letter-spacing: 1px;
+            color: #656565;
+        }
+    }
+    .skills-wrapper{
+        li {
+            line-height: 1.5;
+            font-size: .7rem;
+            text-transform: none;
+        }
+    }
+    .realisations-wrapper{
+        ul {
+            li {
+                font-size: 1.1rem;
+                font-weight: 300;
+                line-height: 1.6;
+            }
+        }
+    }
+    .interests-wrapper {
+        ul {
+            li {
+                font-size: .8rem;
+            }
+        }
+    }
+}

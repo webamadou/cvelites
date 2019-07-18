@@ -9,7 +9,7 @@ import $ from "jquery";
 
 class App extends React.Component {
     _loginUser = (email, password) => {
-        $("#login-form button")
+        $("#email-login-btn")
             .attr("disabled", "disabled")
             .html(
                 '<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i><span class="sr-only">Loading...</span>'
@@ -135,14 +135,21 @@ class App extends React.Component {
     };
 
     _logoutUser = () => {
-        console.log("Here we go");
-        let appState = {
-            isLoggedIn: false,
-            user: {}
-        };
-        // save app state with user date in local storage
-        localStorage["appState"] = JSON.stringify(appState);
-        this.setState(appState);
+        axios
+            .get("http://localhost:8000/api/user/logout")
+            .then(response => {
+                //console.log(response);
+                return response;
+            })
+            .then(json => {
+                let appState = {
+                    isLoggedIn: false,
+                    user: {}
+                };
+                // save app state with user date in local storage
+                localStorage["appState"] = JSON.stringify(appState);
+                this.setState(appState);
+            });
     };
 
     componentDidMount() {

@@ -19,6 +19,13 @@
 </head>
 <body>
     <div id="root"></div>
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © Your Website 2019</span>
+            </div>
+        </div>
+    </footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

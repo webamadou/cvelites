@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSlugToUsers extends Migration
+class AddAvatarToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddSlugToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('user_slug')->default(null)->nullable(true)->unique();
+            $table->mediumText('avatar')->nullable(true)->default(null);
+            $table->integer('gender')->nullable(true)->default(null);
         });
     }
 
@@ -26,7 +27,8 @@ class AddSlugToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('user_slug');
+            $table->dropColumn('avatar');
+            $table->dropColumn('gender');
         });
     }
 }
