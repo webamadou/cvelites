@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 
 const Login = ({ history, loginUser = f => f }) => {
-    console.log(history);
-
     let _email, _password;
     const handleLogin = e => {
         e.preventDefault();

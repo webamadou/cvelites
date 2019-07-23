@@ -16924,14 +16924,14 @@ a.logo:hover {
   color: #000;
   font-size: 1rem;
   font-weight: normal;
-  height: 297mm;
+  height: auto;
 }
 
 .mod-saly .header-wrapper {
   padding: 1rem;
   padding-top: 2rem;
   position: relative;
-  height: 248.66px;
+  max-height: 248.66px;
   overflow: hidden;
   margin: 0;
   color: #000;

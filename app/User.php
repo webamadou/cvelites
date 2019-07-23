@@ -39,15 +39,6 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public function country(){
-        return $this->belongsTo('App\Country');
-    }
-
-    protected $avatar_location = "/images/avatar";
-
-    public function hobbies(){
-        return $this->belongsToMany('App\Hobby');
-    }
     protected function getRelatedSlugs($user_slug, $id = 0)
     {
         return User::select('user_slug')->where('user_slug', 'like', $user_slug.'%')
@@ -81,8 +72,26 @@ class User extends Authenticatable implements JWTSubject
         throw new \Exception('Can not create a unique slug for the user');
     }
 
+    public function country(){
+        return $this->belongsTo('App\Country');
+    }
+    public function hobbies(){
+        return $this->belongsToMany('App\Hobby');
+    }
     public function skills(){
         return $this->belongsToMany('App\Skill');
+    }
+    public function experiences(){
+        return $this->hasMany('App\Experience');
+    }
+    public function achievements(){
+        return $this->hasMany('App\Achievement');
+    }
+    public function educations(){
+        return $this->hasMany('App\Education');
+    }
+    public function awards(){
+        return $this->hasMany('App\Award');
     }
 
     public function getJWTIdentifier()

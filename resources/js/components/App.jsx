@@ -4,10 +4,22 @@ import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import Home from "./Home";
+import CVBuilder from "./CVBuilder";
 import axios from "axios";
 import $ from "jquery";
 
+import Tests from "./Test";
+
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoggedIn: false,
+            user: {}
+        };
+        this._checkAppState();
+    }
+
     _loginUser = (email, password) => {
         $("#email-login-btn")
             .attr("disabled", "disabled")
@@ -21,21 +33,11 @@ class App extends React.Component {
         axios
             .post("http://localhost:8000/api/user/login", formData)
             .then(response => {
-                console.log(response);
                 return response;
             })
             .then(json => {
                 if (json.data.success) {
-                    //alert("Login Successful!");
-
-                    let userData = {
-                        first_name: json.data.data.first_name,
-                        name: json.data.data.name,
-                        id: json.data.data.email,
-                        email: json.data.data.email,
-                        auth_token: json.data.data.auth_token,
-                        timestamp: new Date().toString()
-                    };
+                    let userData = json.data.data;
                     let appState = {
                         isLoggedIn: true,
                         user: userData
@@ -52,10 +54,11 @@ class App extends React.Component {
                             json.data.data
                         }</span>`
                     );
-                    //alert(`Login Failed ${json.data.data}`);
+                    /* $("#email-login-btn")
+                        .removeAttr("disabled")
+                        .html("Login"); */
                 }
-
-                $("#login-form button")
+                $("#email-login-btn")
                     .removeAttr("disabled")
                     .html("Login");
             })
@@ -65,7 +68,7 @@ class App extends React.Component {
                 $("#feedbacks").html(
                     `<span className="alert alert-danger">An Error Occured</span>`
                 );
-                $("#login-form buttton")
+                $("#email-login-btn")
                     .removeAttr("disabled")
                     .html("Login");
             });
@@ -87,7 +90,6 @@ class App extends React.Component {
         axios
             .post("http://localhost:8000/api/user/register", formData)
             .then(response => {
-                console.log(response);
                 return response;
             })
             .then(json => {
@@ -126,8 +128,6 @@ class App extends React.Component {
                 $("#feedbacks").html(
                     `<span className="alert alert-danger">An error occured, Please try again latter</span>`
                 );
-                //alert("An Error Occured!" + error);
-                console.log(`${formData} ${error}`);
                 $("#register-user-btn")
                     .removeAttr("disabled")
                     .html("Register");
@@ -135,28 +135,30 @@ class App extends React.Component {
     };
 
     _logoutUser = () => {
-        axios
-            .get("http://localhost:8000/api/user/logout")
-            .then(response => {
-                //console.log(response);
-                return response;
-            })
-            .then(json => {
-                let appState = {
-                    isLoggedIn: false,
-                    user: {}
-                };
-                // save app state with user date in local storage
-                localStorage["appState"] = JSON.stringify(appState);
-                this.setState(appState);
+        let appState = {
+            isLoggedIn: false,
+            user: {}
+        };
+        // save app state with user date in local storage
+        localStorage["appState"] = JSON.stringify(appState);
+        this.setState(appState);
+    };
+
+    _checkAppState = () => {
+        let state = localStorage["appState"];
+        /* if (state) {
+            let AppState = JSON.parse(state);
+            this.setState({
+                isLoggedIn: AppState.isLoggedIn,
+                user: AppState
             });
+        } */
     };
 
     componentDidMount() {
         let state = localStorage["appState"];
         if (state) {
             let AppState = JSON.parse(state);
-            console.log(AppState);
             this.setState({
                 isLoggedIn: AppState.isLoggedIn,
                 user: AppState
@@ -164,21 +166,13 @@ class App extends React.Component {
         }
     }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoggedIn: false,
-            user: {}
-        };
-    }
-
     render() {
         if (
             !this.state.isLoggedIn &&
-            this.props.location.pathname !== "/" &&
-            this.props.location.pathname !== "/app" &&
-            this.props.location.pathname !== "/app/login" &&
-            this.props.location.pathname !== "/app/register"
+            (this.props.location.pathname !== "/" &&
+                this.props.location.pathname !== "/app" &&
+                this.props.location.pathname !== "/app/login" &&
+                this.props.location.pathname !== "/app/register")
         ) {
             this.props.history.push("/app/login");
         }
@@ -198,7 +192,6 @@ class App extends React.Component {
                         <Home
                             {...props}
                             logOut={this._logoutUser}
-                            isLoggedIn={this.state.isLoggedIn}
                             user={this.state.user}
                         />
                     )}
@@ -208,6 +201,18 @@ class App extends React.Component {
                     path="/app"
                     render={props => (
                         <Home
+                            {...props}
+                            logOut={this._logoutUser}
+                            user={this.state.user}
+                        />
+                    )}
+                />
+
+                <Route
+                    exact
+                    path="/app/cvbuilder"
+                    render={props => (
+                        <CVBuilder
                             {...props}
                             logOut={this._logoutUser}
                             isLoggedIn={this.state.isLoggedIn}
@@ -238,7 +243,6 @@ class App extends React.Component {
 }
 
 const AppContainer = withRouter(props => <App {...props} />);
-// console.log(store.getState())
 render(
     <BrowserRouter>
         <AppContainer />
