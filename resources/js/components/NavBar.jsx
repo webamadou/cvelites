@@ -142,7 +142,7 @@ class NavBar extends Component {
                                 Activity Log
                             </a>
                             <div className="dropdown-divider"></div>
-                            <button className="dropdown-item" onClick={this.props.logOut}><i className="fa fa-power"></i> Logout</button>
+                            <Link className="dropdown-item" to="/app/login"><i className="fa fa-power"></i> Logout</Link>
                         </div>
                     </li>
                 </ul>

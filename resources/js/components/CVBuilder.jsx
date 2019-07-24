@@ -3,11 +3,19 @@ import NavBar from "./NavBar";
 import Saly from "./models/Saly";
 
 class CVBuilder extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: JSON.parse(localStorage.getItem("user"))
+        };
+    }
     render() {
+        const { user } = this.state;
+        console.log(user);
         return (
             <div>
-                <NavBar logOut={this.props.logOut} />
-                <Saly user={this.props.user.user} />
+                <NavBar />
+                <Saly user={user} />
                 <div id="blur" />
                 <div id="bg" />
             </div>
