@@ -16,6 +16,7 @@
 });*/
 
 Route::view('/app/{path?}','app');
+Route::view('/app/verify/{id}', 'app')->name('verificationapi');
 Route::redirect('/','/app');
 
 Route::middleware(['auth'])
@@ -29,7 +30,7 @@ Route::middleware(['auth'])
         Route::post('languageListFilter','DataTablesController@languagesListFilter')->name('langFilterData');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -14,7 +14,7 @@ class Login extends Component {
             password: "",
             buttonText: "<span className='icon fa-user' /> Login",
             disabled: false,
-            error: null
+            error: []
         };
     }
 
@@ -47,7 +47,7 @@ class Login extends Component {
                     this.props.history.push(from);
                 } else {
                     this.setState({
-                        error: data.data,
+                        error: data.message,
                         disabled: false,
                         buttonText: ""
                     });
@@ -66,6 +66,11 @@ class Login extends Component {
 
     render() {
         const { email, password, buttonText, disabled, error } = this.state;
+        const errors = Object.keys(error).map(key => (
+            <div className="alert alert-warning" key={key}>
+                {error[key]}
+            </div>
+        ));
         return (
             <div>
                 <div id="wrapper" className="formWrapper">
@@ -75,7 +80,7 @@ class Login extends Component {
                         </Link>
                     </div>
                     <h2 className="major">Authenticate</h2>
-                    <div id="feedbacks">{error}</div>
+                    <div id="feedbacks">{errors}</div>
                     <form method="post" action="#" onSubmit={this.handleLogin}>
                         <div className="fields">
                             <div className="field">

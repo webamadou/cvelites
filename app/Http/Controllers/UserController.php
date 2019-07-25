@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\Validator;
 use JWTAuth;
 use JWTAuthException;
 
+use Validator;
 use Illuminate\Http\Request;
-
 class UserController extends Controller
 {
     private function getToken($email, $password)
@@ -77,7 +78,7 @@ class UserController extends Controller
             ];
         }
         else
-            $response = ['success'=>false, 'data'=>'Record doesnt exists'];
+            $response = ['success'=>false, 'data'=>[], 'message' => ['incorrect'=>'Login or Password incorrect']];
 
         return response()->json($response, 201);
     }
@@ -85,6 +86,20 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required',
+            'name' => 'required',
+            'email' => "required|email|unique:users,email",
+            'password' => 'required',
+            'password_confirm' => 'required|same:password',
+            ]);
+        if($validator->fails()){
+            return response()->json([
+                'success' => false,
+                'data' => '',
+                'message' => $validator->messages()
+            ], 201);
+        }
         $payload = [
             'password'=>\Hash::make($request->password),
             'email'=>$request->email,
@@ -95,25 +110,26 @@ class UserController extends Controller
         $user = new \App\User($payload);
         if ($user->save())
         {
-            $token = self::getToken($request->email, $request->password); // generate user token
+            /*$token = self::getToken($request->email, $request->password); // generate user token
             if (!is_string($token))  return response()->json(['success'=>false,'data'=>'Token generation failed'], 201);
             $user = \App\User::where('email', $request->email)->get()->first();
             $user->auth_token = $token; // update user token
-            $user->save();
+            $user->save();*/
+            $user->sendApiEmailVerificationNotification();
             $response = [
                 'success'=>true,
-                'data'=>[
-                    'first_name' => $user->first_name,
-                    'name'=>$user->name,
-                    'id'=>$user->id,
-                    'email'=>$user->email,
-                    'auth_token'=>$token
-                ]
+                'data'=>[],
+                'message' => "Your registration were perfectly saved.<br/>You need to activate your account in order to start using it. We've sent you an email with a link to activate your account.<br/>Please, go to your email address and click on the link to activate your account"
             ];
         }
-        else
-            $response = ['success'=>false, 'data'=>'Couldnt register user'];
-
+        else {
+            $response = [
+                'success' => false,
+                'data' => [],
+                'message' => "An error occured while processing. Try again latter please"
+            ];
+            return response()->json($response, 201);
+        }
         return response()->json($response, 201);
     }
 

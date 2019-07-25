@@ -1,18 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { userService } from "./_services";
+import Loader from "./Loader";
 
 class Register extends React.Component {
     constructor(props) {
         super(props);
+
+        userService.logout();
         this.state = {
             first_name: "",
             name: "",
             email: "",
             password: "",
-            buttonText: "<span className='icon fa-user' /> Login",
+            password_confirm: "",
+            displayLoader: "none",
             disabled: false,
-            error: null
+            error: ""
         };
     }
 
@@ -28,33 +32,41 @@ class Register extends React.Component {
 
     handleRegister = e => {
         e.preventDefault();
-        const { first_name, name, email, password } = this.state;
+        const {
+            first_name,
+            name,
+            email,
+            password,
+            password_confirm
+        } = this.state;
 
         // stop here if form is invalid
         if (!(first_name && name && email && password)) {
             return;
         }
         this.setState({
-            buttonText:
-                "<i class='fa fa-spinner fa-spin fa-1x fa-fw'></i><span class='sr-only'>Loading...</span>",
+            displayLoader: "flex",
             disabled: false
         });
 
         //this.setState({ loading: true });
-        userService.register(first_name, name, email, password).then(data => {
-            if (data.success) {
-                const { from } = this.props.location.state || {
-                    from: { pathname: "/" }
-                };
-                this.props.history.push(from);
-            } else {
-                this.setState({
-                    error: data.data,
-                    disabled: false,
-                    buttonText: ""
-                });
-            }
-        });
+        userService
+            .register(first_name, name, email, password, password_confirm)
+            .then(data => {
+                if (data.success) {
+                    const { from } = this.props.location.state || {
+                        from: { pathname: `/app/notification` }
+                    };
+                    this.props.history.push(from);
+                } else {
+                    let feedbacks = [];
+                    this.setState({
+                        error: data.message,
+                        disabled: false,
+                        displayLoader: "none"
+                    });
+                }
+            });
     };
 
     render() {
@@ -63,20 +75,27 @@ class Register extends React.Component {
             name,
             email,
             password,
-            buttonText,
+            password_confirm,
+            displayLoader,
             disabled,
             error
         } = this.state;
+        const errors = Object.keys(error).map(key => (
+            <div className="alert alert-warning" key={key}>
+                {error[key]}
+            </div>
+        ));
         return (
             <div>
                 <div id="wrapper" className="formWrapper">
+                    <Loader displayLoader={displayLoader} />
                     <div className="logo">
                         <Link to="/app">
                             <span className="icon fa-gem" />
                         </Link>
                     </div>
                     <h2 className="major">Register</h2>
-                    <div id="feedbacks">{error}</div>
+                    <div id="feedbacks">{errors}</div>
                     <form
                         method="post"
                         action=""
@@ -125,7 +144,7 @@ class Register extends React.Component {
                             <div className="field">
                                 <label htmlFor="password">Password</label>
                                 <input
-                                    password={password}
+                                    value={password}
                                     autoComplete="off"
                                     id="password"
                                     name="password"
@@ -140,6 +159,7 @@ class Register extends React.Component {
                                     Password Confirm
                                 </label>
                                 <input
+                                    value={password_confirm}
                                     autoComplete="off"
                                     id="password_confirm"
                                     name="password_confirm"

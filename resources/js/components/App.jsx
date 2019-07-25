@@ -7,6 +7,8 @@ import Login from "./Login";
 import Register from "./Register";
 import Home from "./Home";
 import CVBuilder from "./CVBuilder";
+import VerifyEmail from "./VerifyEmail";
+import Notifications from "./Notifications";
 import axios from "axios";
 import $ from "jquery";
 
@@ -25,6 +27,8 @@ class App extends React.Component {
                 />
                 <Route path="/app/login" component={Login} />
                 <Route path="/app/register" component={Register} />
+                <Route path="/app/verify/:id" component={VerifyEmail} />
+                <Route path="/app/notification" component={Notifications} />
             </Switch>
         );
     }

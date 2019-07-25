@@ -35,4 +35,6 @@ Route::group(['middleware' => 'api-header'], function () {
     Route::post('user/login', 'UserController@login');
     Route::post('user/register', 'UserController@register');
     Route::get('user/logout', 'UserController@logout');
+    Route::get('/app/verify/{id}', 'VerificationApiController@verify')->name('verificationapi.verify');
+    Route::get('user/resend', 'VerificationApiController@resend')->name('verificationapi.resend');
 });
