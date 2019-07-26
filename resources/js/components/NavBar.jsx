@@ -159,7 +159,7 @@ class NavBar extends Component {
                             aria-expanded="false"
                         >
                             <span className="mr-2 d-lg-inline text-gray-600 small">
-                                {`${user.first_name} ${user.name}`}
+                                {user.first_name} {user.name}
                                 <span className="caret" />
                             </span>
                             <i className="fa fa-user" />

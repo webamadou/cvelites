@@ -30,8 +30,16 @@ class HomeUserLogged extends Component {
                             <div className="col-md-4">
                                 <div className="card mb-4 bg-dark shadow-sm">
                                     <div className="card-body">
-                                        <h3>{user.name}</h3>
+                                        <h3>
+                                            {user.first_name} {user.name}
+                                        </h3>
                                         <h5>{user.title}</h5>
+                                        <p>
+                                            {user.presentation
+                                                .split(" ")
+                                                .slice(0, 39)
+                                                .join(" ")}
+                                        </p>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <div className="btn-group">
                                                 <Link to="/app/cvbuilder">

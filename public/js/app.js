@@ -85757,7 +85757,9 @@ function (_Component) {
     value: function render() {
       var user = this.state.user;
       console.log(user);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavBar__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_models_Saly__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        user: user
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_models_Saly__WEBPACK_IMPORTED_MODULE_2__["default"], {
         user: user
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "blur"
@@ -86219,7 +86221,7 @@ function (_Component) {
         "aria-expanded": "false"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "mr-2 d-lg-inline text-gray-600 small"
-      }, "".concat(user.first_name, " ").concat(user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, user.first_name, " ", user.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "caret"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-user"
@@ -87767,7 +87769,7 @@ function (_Component) {
         className: "card mb-4 bg-dark shadow-sm"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, user.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.first_name, " ", user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, user.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.presentation.split(" ").slice(0, 39).join(" ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-between align-items-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group"

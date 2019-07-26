@@ -14,7 +14,7 @@ class CVBuilder extends Component {
         console.log(user);
         return (
             <div>
-                <NavBar />
+                <NavBar user={user} />
                 <Saly user={user} />
                 <div id="blur" />
                 <div id="bg" />
