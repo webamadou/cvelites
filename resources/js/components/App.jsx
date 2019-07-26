@@ -18,13 +18,13 @@ class App extends React.Component {
     render() {
         return (
             <Switch data="data">
-                <PrivateRoute exact path="/" component={Home} />
-                <PrivateRoute exact path="/app" component={Home} />
                 <PrivateRoute
                     exact
                     path="/app/cvbuilder"
                     component={CVBuilder}
                 />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/app" component={Home} />
                 <Route path="/app/login" component={Login} />
                 <Route path="/app/register" component={Register} />
                 <Route path="/app/verify/:id" component={VerifyEmail} />

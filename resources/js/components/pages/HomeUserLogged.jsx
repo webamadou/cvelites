@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 import NavBar from "../NavBar";
 
 class HomeUserLogged extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: JSON.parse(localStorage.getItem("user"))
+        };
+    }
     render() {
-        const { user } = this.props.user;
+        const { user } = this.state;
         return (
             <div>
-                <NavBar logOut={this.props.logOut} />
+                <NavBar user={user} />
                 <div id="wrapper">
                     <section id="header">
                         <div className="logo">
@@ -24,8 +30,8 @@ class HomeUserLogged extends Component {
                             <div className="col-md-4">
                                 <div className="card mb-4 bg-dark shadow-sm">
                                     <div className="card-body">
-                                        <h3>Papa Amadou Abdoulaye BA</h3>
-                                        <h5>Developpeur Web</h5>
+                                        <h3>{user.name}</h3>
+                                        <h5>{user.title}</h5>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <div className="btn-group">
                                                 <Link to="/app/cvbuilder">
