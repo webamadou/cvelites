@@ -41,8 +41,8 @@ class UserController extends Controller
         if(Auth::attempt($request->only('email','password')))
         {
             //$user = \App\User::with()->where('email', $request->email)->get()->first();
-            $user = User::with(['hobbies','skills','experiences','country','achievements','educations','awards'])
-                ->where('email','abdoulaye@live.fr')
+            $user = User::with(['hobbies','skills','experiences','country','achievements','educations','awards','resumes'])
+                ->where('email',$request->email)
                 ->first();
             $token = self::getToken($request->email, $request->password);
             $user->auth_token = $token;
@@ -72,7 +72,8 @@ class UserController extends Controller
                         'country' => $user->country,
                         'achievements' => $user->achievements,
                         'educations' => $user->educations,
-                        'awards' => $user->awards
+                        'awards' => $user->awards,
+                        'resumes' => $user->resume
                     ]
                 ]
             ];
