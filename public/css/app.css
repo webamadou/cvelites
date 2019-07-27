@@ -16652,6 +16652,10 @@ That involve the cv builder user's profil and any other area that only connected
   transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
 }
 
+#root {
+  margin-bottom: 6vh;
+}
+
 .bg-dark {
   background-color: #5a5c69 !important;
 }
