@@ -4,23 +4,23 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDomainsTable extends Migration
+class CreateDomains extends Migration
 {
+    public $table_name = 'domains';
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public $table_name = 'domains';
     public function up()
     {
-        Schema::create($this->table_name, function (Blueprint $table) {
+        Schema::create('domains', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->text('description')->default(null)->nullable(true);
-            $table->unsignedInteger('parent_id')->default(null)->nullable(true);
-            $table->integer('status')->default(0)->nullable(true);
+            $table->string('name')->default(null)->default(null);
+            $table->string('description')->default(null)->default(null);
+            $table->bigInteger('parent_id')->unsigned()->default(null)->default(null);
+            $table->mediumText('address')->default(null)->default(null);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateDomainsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists($this->table_name);
+        Schema::dropIfExists('domains');
     }
 }

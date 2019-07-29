@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEducationTable extends Migration
+class CreateEducations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateEducationTable extends Migration
      */
     public function up()
     {
-        Schema::create('education', function (Blueprint $table) {
+        Schema::create('educations', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id');
-            $table->bigInteger('school_id')->nullable(true)->default(null);
-            $table->bigInteger('user_id')->nullable(true)->default(null);
-            $table->string('degree')->default(null)->nullable(true);
-            $table->string('graduation_year')->default(null)->nullable(true);
+            $table->string('title')->nullable(true)->default(null);
             $table->text('description')->nullable(true)->default(null);
+            $table->bigInteger('school_id')->unsigned()->nullable(true)->default(null);
+            $table->bigInteger('resume_id')->unsigned()->nullable(true)->default(null);
+            $table->string('degree')->default(null)->nullable(true);
+            $table->dateTime('graduationYear')->default(null)->nullable(true);
             $table->string('address')->default(null)->nullable(true);
+
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ class CreateEducationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('education');
+        Schema::dropIfExists('educations');
     }
 }

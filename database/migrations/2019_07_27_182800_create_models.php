@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateResumesTable extends Migration
+class CreateModels extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateResumesTable extends Migration
      */
     public function up()
     {
-        Schema::create('resumes', function (Blueprint $table) {
+        Schema::create('models', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->bigInteger('user_id')->default(null)->nullable(true);
-            $table->text('description')->nullable(true)->default(null);
-            $table->integer('status')->nullable(true)->default(0);
-
+            $table->string('name')->default(null)->nullable(true);
+            $table->string('file_name')->default(null)->nullable(true);
+            $table->integer('string')->default(null)->nullable(true);
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateResumesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resumes');
+        Schema::dropIfExists('models');
     }
 }

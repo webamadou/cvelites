@@ -4,14 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSchoolsTable extends Migration
+class CreateTableCountries extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public $table_name = 'schools';
+    public $table_name = 'countries';
     public function up()
     {
         if(Schema::hasTable($this->table_name))
@@ -19,20 +19,15 @@ class CreateSchoolsTable extends Migration
         Schema::create($this->table_name, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
+            $table->string('iso', 15)->nullable(true)->default(null);
             $table->string('name');
-            $table->text('description')->default(null)->nullable(true);
-            $table->text('legal_status')->default(null)->nullable(true);
-            $table->text('address')->default(null)->nullable(true);
-            $table->unsignedInteger('country_id')->default(null)->nullable(true);
+            $table->string('nicename')->default(null)->nullable(true);
+            $table->string('iso3')->default(null)->nullable(true);
+            $table->string('numcode')->default(null)->nullable(true);
+            $table->string('phonecode')->default(null)->nullable(true);
+            $table->string('status')->default(null)->nullable(true);
 
             $table->timestamps();
-        });
-
-        Schema::table($this->table_name, function(Blueprint $table) {
-            $table->foreign('country_id')
-                ->references('id')->on('countries')
-                ->onUpdate('NO ACTION')
-                ->onDelete('NO ACTION');
         });
     }
 

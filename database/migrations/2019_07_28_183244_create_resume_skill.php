@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHobbiesTable extends Migration
+class CreateResumeSkill extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateHobbiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hobbies', function (Blueprint $table) {
+        Schema::create('resume_skill', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id');
-            $table->string('name')->default(null);
-            //$table->bigInteger('user_id')->default(null)->nullable(true);
-            $table->string('icon')->default(null)->nullable(true);
-            $table->integer('status')->default(null)->nullable(true);
+            $table->bigInteger('skill_id')->unsigned()->default(null)->nullable(true);
+            $table->bigInteger('resume_id')->unsigned()->default(null)->nullable(true);
+            $table->integer('level')->default(0)->nullable(true);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateHobbiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hobbies');
+        Schema::dropIfExists('resume_skill');
     }
 }

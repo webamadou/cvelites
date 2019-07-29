@@ -4,22 +4,22 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAwardsTable extends Migration
+class CreateSkills extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public $table_name = "awards";
     public function up()
     {
-        Schema::create($this->table_name, function (Blueprint $table) {
+        Schema::create('skills', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->nullable(true);
-            $table->string('title')->default(null)->nullable(true);
+            $table->string('name')->nullable(true)->default(null);
             $table->text('description')->default(null)->nullable(true);
-            $table->date('date')->nullable(true)->default(null);
+            $table->bigInteger('resume_id')->unsigned()->nullable(true)->default(null);
+            $table->integer('status')->default(0)->nullable(true);
 
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateAwardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists($this->table_name);
+        Schema::dropIfExists('skills');
     }
 }
