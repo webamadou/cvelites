@@ -15,10 +15,10 @@ class HobbyTableSeeder extends Seeder
     {
         factory(App\Hobby::class, 12)->create();
 
-        for ($i = 0; $i <= 12; $i++){
-            $user = App\User::all()->random(1)->first();
+        /*for ($i = 0; $i <= 12; $i++){
+            $resume = App\Resume::all()->random(1)->first();
             $hobbies = App\Hobby::all()->random(3);
-            $user->hobbies()->sync($hobbies);
-        }
+            $resume->hobbies()->sync($hobbies);
+        }*/
     }
 }

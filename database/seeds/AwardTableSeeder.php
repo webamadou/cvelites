@@ -11,6 +11,6 @@ class AwardTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Award::class)->create();
+        factory(App\Award::class, 20)->create();
     }
 }

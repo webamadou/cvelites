@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Domain extends Model
+class Theme extends Model
 {
     protected $guarded = [];
 
-    public function domain(){
-        return $this->belongsTo('App\Domain');
+    public function resumes(){
+        return $this->hasMany('App\Resume');
     }
 }

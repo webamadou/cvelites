@@ -80,24 +80,6 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     public function country(){
         return $this->belongsTo('App\Country');
     }
-    public function hobbies(){
-        return $this->belongsToMany('App\Hobby');
-    }
-    public function skills(){
-        return $this->belongsToMany('App\Skill');
-    }
-    public function experiences(){
-        return $this->hasMany('App\Experience');
-    }
-    public function achievements(){
-        return $this->hasMany('App\Achievement');
-    }
-    public function educations(){
-        return $this->hasMany('App\Education');
-    }
-    public function awards(){
-        return $this->hasMany('App\Award');
-    }
 
     public function resumes(){
         return $this->hasMany('App\Resume');

@@ -18,7 +18,7 @@ class CreateModels extends Migration
             $table->bigIncrements('id');
             $table->string('name')->default(null)->nullable(true);
             $table->string('file_name')->default(null)->nullable(true);
-            $table->integer('string')->default(null)->nullable(true);
+            $table->integer('status')->default(null)->nullable(true);
             $table->timestamps();
         });
     }

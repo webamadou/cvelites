@@ -94,7 +94,7 @@ class CreateTableIndexes extends Migration
      */
     public function down()
     {
-        return;
+        //return;
         Schema::disableForeignKeyConstraints();
         Schema::table("users", function (Blueprint $table){
             $table->dropForeign("user_country_model_country_foreign");
@@ -111,7 +111,6 @@ class CreateTableIndexes extends Migration
         });
         Schema::table("awards", function (Blueprint $table){
             $table->dropForeign("resume_awards_model_awards_foreign");
-            $table->dropForeign("resume_educations_model_educations_foreign");
         });
         Schema::table("educations", function (Blueprint $table){
             $table->dropForeign("resume_educations_model_educations_foreign");

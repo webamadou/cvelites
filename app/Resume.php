@@ -12,8 +12,44 @@ class Resume extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function templates(){
-        return $this->belongsTo("App\Template");
+    public function skills(){
+        return $this->belongsToMany("App\Skill");
+    }
+
+    public function font(){
+        return $this->belongsTo('App\Font');
+    }
+
+    public function theme(){
+        return $this->belongsTo('App\Theme');
+    }
+
+    public function model(){
+        return $this->belongsTo('App\ResumeModel');
+    }
+
+    public function hobbies(){
+        return $this->belongsToMany("App\Hobby");
+    }
+
+    public function languages(){
+        return $this->belongsToMany("App\Language");
+    }
+
+    public function experiences(){
+        return $this->hasMany('App\Experience');
+    }
+
+    public function achievements(){
+        return $this->hasMany('App\Achievement');
+    }
+
+    public function educations(){
+        return $this->hasMany('App\Education');
+    }
+
+    public function awards(){
+        return $this->hasMany('App\Award');
     }
 
     public function checkCode($random){

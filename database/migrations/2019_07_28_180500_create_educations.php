@@ -21,7 +21,7 @@ class CreateEducations extends Migration
             $table->bigInteger('school_id')->unsigned()->nullable(true)->default(null);
             $table->bigInteger('resume_id')->unsigned()->nullable(true)->default(null);
             $table->string('degree')->default(null)->nullable(true);
-            $table->dateTime('graduationYear')->default(null)->nullable(true);
+            $table->dateTime('graduation_year')->default(null)->nullable(true);
             $table->string('address')->default(null)->nullable(true);
 
             $table->timestamps();

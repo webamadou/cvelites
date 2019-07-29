@@ -27,6 +27,7 @@ class CreateResumes extends Migration
             $table->string('theme_name')->default(null)->nullable(true)->comment('We are cheating on this one also');
             $table->bigInteger('font_id')->unsigned()->default(null)->nullable(true);
             $table->string('font_name')->default(null)->nullable(true)->comment('We are cheating on this one again');
+            $table->unsignedInteger('status')->default(1)->nullable(null);
 
             $table->timestamps();
         });

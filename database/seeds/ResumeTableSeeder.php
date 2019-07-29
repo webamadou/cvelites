@@ -11,13 +11,13 @@ class ResumeTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Resume::class, 6)->create();
-        for ($i = 0; $i<12; $i++){
+        factory(App\Resume::class, 30)->create();
+        /*for ($i = 0; $i<12; $i++){
             $languages = App\Language::all()->random(2);
-            $templates = App\Template::all()->random(2);
+            //$templates = App\Template::all()->random(2);
             $resume = App\Resume::all()->random(1)->first();
             $resume->languages()->sync($languages);
-            $resume->templates()->sync($templates);
-        }
+            //$resume->templates()->sync($templates);
+        }*/
     }
 }

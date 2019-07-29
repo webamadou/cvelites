@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Education extends Model
 {
-    public function user(){
-        return $this->belongsTo('App\User');
+    protected $table = 'educations';
+    protected $guarded = [];
+
+    public function resume(){
+        return $this->belongsTo('App\Resume');
     }
 }

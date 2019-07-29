@@ -14,11 +14,11 @@ class SkillTableSeeder extends Seeder
         $faker =  \Faker\Factory::create();
         factory(App\Skill::class, 12)->create();
         for ($i = 0; $i<12; $i++){
-            $user = App\User::all()->random(1)->first();
+            $resume = App\Resume::all()->random(1)->first();
             $skills = App\Skill::all()->random(4);
             $data = [];
             foreach ($skills as $key => $skill){
-                $user->skills()->sync([$skill->id => ['level' => $faker->numberBetween(1,30)]]);
+                $resume->skills()->sync([$skill->id => ['level' => $faker->numberBetween(1,100)]]);
             }
             #$user->skills()->sync($data);
         }

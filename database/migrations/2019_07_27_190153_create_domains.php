@@ -17,10 +17,12 @@ class CreateDomains extends Migration
         Schema::create('domains', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->string('name')->default(null)->default(null);
-            $table->string('description')->default(null)->default(null);
-            $table->bigInteger('parent_id')->unsigned()->default(null)->default(null);
-            $table->mediumText('address')->default(null)->default(null);
+            $table->string('name')->default(null)->nullable(true);
+            $table->text('description')->default(null)->nullable(true);
+            $table->bigInteger('parent_id')->unsigned()->default(null)->nullable(true);
+            $table->mediumText('address')->default(null)->nullable(true);
+            $table->unsignedInteger('status')->default(1)->nullable(true);
+
             $table->timestamps();
         });
     }

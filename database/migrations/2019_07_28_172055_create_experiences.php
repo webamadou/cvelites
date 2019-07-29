@@ -21,7 +21,7 @@ class CreateExperiences extends Migration
             $table->bigInteger('company_id')->unsigned()->default(null)->nullable(true);
             $table->bigInteger('resume_id')->unsigned()->default(null)->nullable(true);
             $table->dateTime('started_at')->default(null)->nullable(true);
-            $table->dateTime('end_at')->default(null)->nullable(true);
+            $table->dateTime('ended_at')->default(null)->nullable(true);
             $table->unsignedInteger('still_there')->default(null)->nullable(true);
             $table->unsignedInteger('status')->default(null)->nullable(true);
             $table->timestamps();

@@ -20,6 +20,18 @@ $factory->define(Language::class, function (Faker $faker) {
                 "name" => "Española",
                 "code" => "es",
                 "status" => 1
+            ], [
+                "name" => "Arabic",
+                "code" => "ar",
+                "status" => 1
+            ], [
+                "name" => "Italian",
+                "code" => "it",
+                "status" => 1
+            ], [
+                "name" => "Portuguese",
+                "code" => "pt",
+                "status" => 1
             ]
         ]
     ];

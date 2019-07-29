@@ -11,6 +11,6 @@ class AchievementTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Achievement::class, 12)->create();
+        factory(App\Achievement::class, 40)->create();
     }
 }

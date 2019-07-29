@@ -32,7 +32,7 @@ class CreateTableUsers extends Migration
             $table->date('birth_date')->default(null)->nullable(true);
             $table->string('birth_place')->default(null)->nullable(true);
             $table->bigInteger('country_id')->unsigned()->default(null)->nullable(true);
-            $table->string('address')->default(null)->nullable(true);
+            $table->mediumText('address')->default(null)->nullable(true);
             $table->unsignedInteger('views')->default(null)->nullable(true);
             $table->unsignedInteger('status')->default(null)->nullable(true);
 

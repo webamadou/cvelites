@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hobby extends Model
 {
-    public function users(){
-        return $this->belongsToMany('App\User');
+    public function resumes(){
+        return $this->belongsToMany('App\Resume');
     }
 }
