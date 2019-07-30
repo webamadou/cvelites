@@ -80798,7 +80798,7 @@ a=this,l=function(e){var t=!1,n=!1,r="escape years months weeks days hours minut
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85666,7 +85666,7 @@ function (_React$Component) {
         data: "data"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_helpers__WEBPACK_IMPORTED_MODULE_3__["PrivateRoute"], {
         exact: true,
-        path: "/app/cvbuilder",
+        path: "/app/cvbuilder/:code",
         component: _CVBuilder__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
@@ -85713,6 +85713,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _NavBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavBar */ "./resources/js/components/NavBar.jsx");
 /* harmony import */ var _models_Saly__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./models/Saly */ "./resources/js/components/models/Saly.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var q__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! q */ "./node_modules/q/q.js");
+/* harmony import */ var q__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(q__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85735,6 +85739,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var CVBuilder =
 /*#__PURE__*/
 function (_Component) {
@@ -85746,21 +85752,42 @@ function (_Component) {
     _classCallCheck(this, CVBuilder);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CVBuilder).call(this, props));
+    var params = _this.props.match.params;
     _this.state = {
-      user: JSON.parse(localStorage.getItem("user"))
+      user: JSON.parse(localStorage.getItem("user")),
+      resumes: [],
+      resumeCode: params.code
     };
     return _this;
   }
 
   _createClass(CVBuilder, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("http://localhost:8000/api/resume/".concat(this.state.resumeCode, "?token=").concat(this.state.user.auth_token), q__WEBPACK_IMPORTED_MODULE_4__["async"]).then(function (response) {
+        return response;
+      }).then(function (json) {
+        _this2.setState({
+          resumes: json.data.data
+        });
+      })["catch"](function (error) {
+        console.log("error => " + error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var user = this.state.user;
-      console.log(user);
+      var _this$state = this.state,
+          user = _this$state.user,
+          resumes = _this$state.resumes;
+      console.log(resumes);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         user: user
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_models_Saly__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        user: user
+        user: user,
+        resumes: resumes
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "blur"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -86939,7 +86966,7 @@ function (_Component) {
   _createClass(Achievements, [{
     key: "render",
     value: function render() {
-      var achievements = this.props.achievements;
+      var achievements = this.props.achievements != undefined ? this.props.achievements : [];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bloc-content realisations-blocs"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, achievements.map(function (achievement) {
@@ -87136,7 +87163,7 @@ function (_Component) {
   _createClass(Educations, [{
     key: "render",
     value: function render() {
-      var educations = this.props.educations;
+      var educations = this.props.educations != undefined ? this.props.educations : [];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bloc-content educations-blocs"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, educations.map(function (education) {
@@ -87206,7 +87233,7 @@ function (_Component) {
   _createClass(Experiences, [{
     key: "render",
     value: function render() {
-      var experiences = this.props.experiences;
+      var experiences = this.props.experiences != undefined ? this.props.experiences : [];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cv-bloc experiences-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -87219,7 +87246,7 @@ function (_Component) {
         }, experience.ended_at) : "Still there";
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "experience",
-          id: experience.id,
+          id: experience,
           key: experience.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, experience.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Afrimedias News Agency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "date-place"
@@ -87286,7 +87313,7 @@ function (_Component) {
   _createClass(Hobbies, [{
     key: "render",
     value: function render() {
-      var hobbies = this.props.hobbies;
+      var hobbies = this.props.hobbies ? this.props.hobbies : [];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bloc-content interest-blocs"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, hobbies.map(function (hobby) {
@@ -87301,6 +87328,84 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Hobbies);
+
+/***/ }),
+
+/***/ "./resources/js/components/cv_components/Languages.jsx":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/cv_components/Languages.jsx ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Languages =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Languages, _Component);
+
+  function Languages() {
+    _classCallCheck(this, Languages);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Languages).apply(this, arguments));
+  }
+
+  _createClass(Languages, [{
+    key: "render",
+    value: function render() {
+      var languages = this.props.languages != undefined ? this.props.languages : [];
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, languages.map(function (language) {
+        var levels = [];
+        var active = "";
+        var levelLenght = parseInt(language.pivot.level) * 0.05;
+        console.log(levelLenght, language.pivot.level);
+
+        for (var i = 0; i < 5; i++) {
+          active = levelLenght > i ? "active" : "";
+          levels.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "level ".concat(active),
+            key: i
+          }));
+        }
+
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: language.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "lang"
+        }, language.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "lang-level"
+        }, levels));
+      }));
+    }
+  }]);
+
+  return Languages;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Languages);
 
 /***/ }),
 
@@ -87473,7 +87578,7 @@ function (_Component) {
   _createClass(Skills, [{
     key: "render",
     value: function render() {
-      var skills = this.props.skills;
+      var skills = this.props.skills != undefined ? this.props.skills : [];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bloc-content skills-blocs"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, skills.map(function (skill) {
@@ -87511,6 +87616,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cv_components_Skills__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../cv_components/Skills */ "./resources/js/components/cv_components/Skills.jsx");
 /* harmony import */ var _cv_components_Achievements__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../cv_components/Achievements */ "./resources/js/components/cv_components/Achievements.jsx");
 /* harmony import */ var _cv_components_Hobbies__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../cv_components/Hobbies */ "./resources/js/components/cv_components/Hobbies.jsx");
+/* harmony import */ var _cv_components_Languages__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../cv_components/Languages */ "./resources/js/components/cv_components/Languages.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -87540,6 +87646,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Saly =
 /*#__PURE__*/
 function (_Component) {
@@ -87554,15 +87661,15 @@ function (_Component) {
   _createClass(Saly, [{
     key: "render",
     value: function render() {
-      var user = this.props.user;
-      var _this$props$user$rela = this.props.user.relations,
-          hobbies = _this$props$user$rela.hobbies,
-          skills = _this$props$user$rela.skills,
-          experiences = _this$props$user$rela.experiences,
-          country = _this$props$user$rela.country,
-          achievements = _this$props$user$rela.achievements,
-          educations = _this$props$user$rela.educations,
-          awards = _this$props$user$rela.awards;
+      var _this$props = this.props,
+          user = _this$props.user,
+          resumes = _this$props.resumes;
+      var experiences = resumes.experiences,
+          educations = resumes.educations,
+          skills = resumes.skills,
+          achievements = resumes.achievements,
+          hobbies = resumes.hobbies,
+          languages = resumes.languages;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid builder-container pt-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -87594,7 +87701,7 @@ function (_Component) {
         className: "cv-bloc educations-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bloc-title"
-      }, "Education"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cv_components_Educations__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, "Educations"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cv_components_Educations__WEBPACK_IMPORTED_MODULE_4__["default"], {
         educations: educations
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-4 r-column"
@@ -87608,7 +87715,7 @@ function (_Component) {
         className: "cv-bloc realisations-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bloc-title"
-      }, "realisatons"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cv_components_Achievements__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }, "R\xE9alisatons"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cv_components_Achievements__WEBPACK_IMPORTED_MODULE_8__["default"], {
         achievements: achievements
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cv-bloc languages-wrapper"
@@ -87616,63 +87723,9 @@ function (_Component) {
         className: "bloc-title"
       }, "languages"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bloc-content languages-blocs"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "lang"
-      }, "Francais"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lang-level"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "lang"
-      }, "Anglais"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lang-level"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "lang"
-      }, "Wolof"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lang-level"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "lang"
-      }, "Arabe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lang-level"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "level"
-      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cv_components_Languages__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        languages: languages
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cv-bloc hobbies-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bloc-title"
@@ -87759,28 +87812,31 @@ function (_Component) {
         className: "content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inner"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Your resumes")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "List of resumes")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container mt-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row d-flex justify-content-center align-items-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card mb-4 bg-dark shadow-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.first_name, " ", user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, user.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.presentation.split(" ").slice(0, 39).join(" ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex justify-content-between align-items-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/app/cvbuilder"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-sm btn-outline-secondary btn-block"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-pencil"
-      }), "Edit")))))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, user.relations.resumes.map(function (resume) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-4",
+          key: resume.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card mb-4 bg-dark shadow-sm"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-body"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.first_name, " ", user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, resume.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.presentation.split(" ").slice(0, 39).join(" ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "d-flex justify-content-between align-items-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "btn-group"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/app/cvbuilder/".concat(resume.code)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "btn btn-sm btn-outline-secondary btn-block"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-pencil"
+        }), "Edit")))))));
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "blur"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "bg"

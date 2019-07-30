@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Skills extends Component {
     render() {
-        const { skills } = this.props;
+        const skills = this.props.skills != undefined ? this.props.skills : [];
         return (
             <div className="bloc-content skills-blocs">
                 <ul>

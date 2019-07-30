@@ -3,7 +3,8 @@ import Moment from "react-moment";
 
 class Educations extends Component {
     render() {
-        const { educations } = this.props;
+        const educations =
+            this.props.educations != undefined ? this.props.educations : [];
         return (
             <div className="bloc-content educations-blocs">
                 <ul>

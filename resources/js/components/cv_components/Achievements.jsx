@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 class Achievements extends Component {
     render() {
-        const { achievements } = this.props;
+        const achievements =
+            this.props.achievements != undefined ? this.props.achievements : [];
         return (
             <div className="bloc-content realisations-blocs">
                 <ul>

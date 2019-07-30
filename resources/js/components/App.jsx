@@ -20,7 +20,7 @@ class App extends React.Component {
             <Switch data="data">
                 <PrivateRoute
                     exact
-                    path="/app/cvbuilder"
+                    path="/app/cvbuilder/:code"
                     component={CVBuilder}
                 />
                 <Route exact path="/" component={Home} />

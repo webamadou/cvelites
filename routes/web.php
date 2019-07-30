@@ -16,6 +16,7 @@
 });*/
 
 Route::view('/app/{path?}','app');
+Route::view('/app/cvbuilder/{path?}','app');
 Route::view('/app/verify/{id}', 'app')->name('verificationapi');
 Route::redirect('/','/app');
 

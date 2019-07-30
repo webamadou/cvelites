@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Hobbies extends Component {
     render() {
-        const { hobbies } = this.props;
+        const hobbies = this.props.hobbies ? this.props.hobbies : [];
         return (
             <div className="bloc-content interest-blocs">
                 <ul>

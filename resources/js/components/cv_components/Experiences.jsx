@@ -3,7 +3,8 @@ import Moment from "react-moment";
 
 class Experiences extends Component {
     render() {
-        const { experiences } = this.props;
+        const experiences =
+            this.props.experiences != undefined ? this.props.experiences : [];
         return (
             <div className="cv-bloc experiences-wrapper">
                 <div className="bloc-title">Experience</div>
@@ -20,7 +21,7 @@ class Experiences extends Component {
                         return (
                             <div
                                 className="experience"
-                                id={experience.id}
+                                id={experience}
                                 key={experience.id}
                             >
                                 <h3>{experience.title}</h3>

@@ -21,41 +21,50 @@ class HomeUserLogged extends Component {
                         </div>
                         <div className="content">
                             <div className="inner">
-                                <h1>Your resumes</h1>
+                                <h1>List of resumes</h1>
                             </div>
                         </div>
                     </section>
                     <div className="container mt-1">
                         <div className="row d-flex justify-content-center align-items-center">
-                            <div className="col-md-4">
-                                <div className="card mb-4 bg-dark shadow-sm">
-                                    <div className="card-body">
-                                        <h3>
-                                            {user.first_name} {user.name}
-                                        </h3>
-                                        <h5>{user.title}</h5>
-                                        <p>
-                                            {user.presentation
-                                                .split(" ")
-                                                .slice(0, 39)
-                                                .join(" ")}
-                                        </p>
-                                        <div className="d-flex justify-content-between align-items-center">
-                                            <div className="btn-group">
-                                                <Link to="/app/cvbuilder">
-                                                    <button
-                                                        type="button"
-                                                        className="btn btn-sm btn-outline-secondary btn-block"
-                                                    >
-                                                        <i className="fa fa-pencil" />
-                                                        Edit
-                                                    </button>
-                                                </Link>
+                            {user.relations.resumes.map(resume => {
+                                return (
+                                    <div className="col-md-4" key={resume.id}>
+                                        <div className="card mb-4 bg-dark shadow-sm">
+                                            <div className="card-body">
+                                                <h3>
+                                                    {user.first_name}{" "}
+                                                    {user.name}
+                                                </h3>
+                                                <h5>{resume.name}</h5>
+                                                <p>
+                                                    {user.presentation
+                                                        .split(" ")
+                                                        .slice(0, 39)
+                                                        .join(" ")}
+                                                </p>
+                                                <div className="d-flex justify-content-between align-items-center">
+                                                    <div className="btn-group">
+                                                        <Link
+                                                            to={`/app/cvbuilder/${
+                                                                resume.code
+                                                            }`}
+                                                        >
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-sm btn-outline-secondary btn-block"
+                                                            >
+                                                                <i className="fa fa-pencil" />
+                                                                Edit
+                                                            </button>
+                                                        </Link>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

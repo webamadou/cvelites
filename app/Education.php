@@ -12,4 +12,8 @@ class Education extends Model
     public function resume(){
         return $this->belongsTo('App\Resume');
     }
+
+    public function school(){
+        return $this->belongsTo('App\School');
+    }
 }

@@ -26,6 +26,7 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         $response = ['success'=>true, 'data'=>$users];
         return response()->json($response, 201);
     });
+    Route::get('resume/{code}', 'ResumesController@getResume')->name('resume.code');
 });
 Route::group(['middleware' => 'api-header'], function () {
 

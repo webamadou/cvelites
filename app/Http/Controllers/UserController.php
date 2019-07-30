@@ -45,7 +45,7 @@ class UserController extends Controller
                 ->where('email',$request->email)
                 ->first();*/
             $user = User::with(['resumes','country'])
-                ->where('email','abdoulaye@live.fr')
+                ->where('email',$request->email)
                 ->first();
 
             $token = self::getToken($request->email, $request->password);
@@ -61,6 +61,7 @@ class UserController extends Controller
                     'gender'=>$user->gender,
                     'first_name'=>$user->first_name,
                     'email'=>$user->email,
+                    'telephone'=>$user->telephone,
                     'presentation'=>$user->presentation,
                     'birth_date'=>$user->birth_date,
                     'birth_place'=>$user->birth_place,
