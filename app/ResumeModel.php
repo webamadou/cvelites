@@ -12,4 +12,7 @@ class ResumeModel extends Model
     public function resumes(){
         return $this->hasMany('App\Resume');
     }
+    public function getFileNameAttribute($file_name){
+        return ucfirst($file_name);
+    }
 }

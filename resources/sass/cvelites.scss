@@ -3,6 +3,8 @@ This scss is used to design the user's space
 That involve the cv builder user's profil and any other area that only connected users can access
  */
 @import './fancy-range';
+
+
 #root {margin-bottom: 6vh;}
 .bg-dark {
     background-color: #5a5c69 !important;
@@ -467,6 +469,7 @@ a.logo, a.logo:hover {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
+    padding-bottom: 2vh;
     margin-right: auto;
     margin-left: auto;
     background: #d2d2d287;

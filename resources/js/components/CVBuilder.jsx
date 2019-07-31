@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
-import Saly from "./models/Saly";
+//import Saly from "./models/Saly";
 import axios from "axios";
+import Loadable from "react-loadable";
+import Loader from "./Loader";
 import { async } from "q";
 
 class CVBuilder extends Component {
@@ -13,9 +15,17 @@ class CVBuilder extends Component {
         this.state = {
             user: JSON.parse(localStorage.getItem("user")),
             resumes: [],
-            resumeCode: params.code
+            resumeCode: params.code,
+            model: this.toggleModule("Saly")
         };
     }
+
+    toggleModule = model => {
+        return Loadable({
+            loader: () => import(`./models/${model}`),
+            loading: () => <Loader />
+        });
+    };
 
     componentDidMount() {
         axios
@@ -29,8 +39,10 @@ class CVBuilder extends Component {
                 return response;
             })
             .then(json => {
+                let model = json.data.data.model.file_name;
                 this.setState({
-                    resumes: json.data.data
+                    resumes: json.data.data,
+                    model: this.toggleModule(model)
                 });
             })
             .catch(error => {
@@ -41,10 +53,11 @@ class CVBuilder extends Component {
     render() {
         const { user, resumes } = this.state;
         console.log(resumes);
+        const Model = this.state.model;
         return (
             <div>
                 <NavBar user={user} />
-                <Saly user={user} resumes={resumes} />
+                <Model user={user} resumes={resumes} />
                 <div id="blur" />
                 <div id="bg" />
             </div>

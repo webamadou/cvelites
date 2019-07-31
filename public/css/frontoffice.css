@@ -29,10 +29,6 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;}
 
-body {
-    line-height: 1;
-}
-
 ol, ul {
     list-style: none;
 }
@@ -93,9 +89,12 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
-
 body {
-    background: #1b1f22;
+    line-height: 1;
+    background-image: url("/images/loader.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -1640,6 +1639,12 @@ body.is-preload #header .content .inner {
 }
 
 /* Footer */
+footer{
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    width: 100%;
+}
 
 #footer {
     -moz-transition: -moz-transform 0.325s ease-in-out, -moz-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
