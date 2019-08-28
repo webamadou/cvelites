@@ -16713,6 +16713,15 @@ a.logo:hover {
   z-index: 99;
 }
 
+.navbar-nav li.exportPDF a {
+  display: block;
+  border: 1px solid #4c84b3;
+  font-size: small;
+  padding: 4px;
+  margin-top: 8px;
+  border-radius: 0;
+}
+
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;

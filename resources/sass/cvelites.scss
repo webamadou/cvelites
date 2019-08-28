@@ -2,14 +2,16 @@
 This scss is used to design the user's space
 That involve the cv builder user's profil and any other area that only connected users can access
  */
-@import './fancy-range';
+@import "./fancy-range";
 
-
-#root {margin-bottom: 6vh;}
+#root {
+    margin-bottom: 6vh;
+}
 .bg-dark {
     background-color: #5a5c69 !important;
 }
-a.logo, a.logo:hover {
+a.logo,
+a.logo:hover {
     font-size: medium;
     font-weight: 900;
     letter-spacing: 1px;
@@ -59,7 +61,8 @@ a.logo, a.logo:hover {
     white-space: nowrap;
 }
 
-.navbar-brand:hover, .navbar-brand:focus {
+.navbar-brand:hover,
+.navbar-brand:focus {
     text-decoration: none;
 }
 
@@ -76,6 +79,15 @@ a.logo, a.logo:hover {
     list-style: none;
     position: relative;
     z-index: 99;
+
+    li.exportPDF a {
+        display: block;
+        border: 1px solid #4c84b3;
+        font-size: small;
+        padding: 4px;
+        margin-top: 8px;
+        border-radius: 0;
+    }
 }
 
 .navbar-nav .nav-link {
@@ -114,7 +126,8 @@ a.logo, a.logo:hover {
     border-radius: 0.35rem;
 }
 
-.navbar-toggler:hover, .navbar-toggler:focus {
+.navbar-toggler:hover,
+.navbar-toggler:focus {
     text-decoration: none;
 }
 
@@ -374,7 +387,8 @@ a.logo, a.logo:hover {
     color: rgba(0, 0, 0, 0.9);
 }
 
-.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+.navbar-light .navbar-brand:hover,
+.navbar-light .navbar-brand:focus {
     color: rgba(0, 0, 0, 0.9);
 }
 
@@ -382,7 +396,8 @@ a.logo, a.logo:hover {
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.8rem;
 }
-.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
     color: rgba(255, 255, 255, 0.7);
 }
 
@@ -414,7 +429,8 @@ a.logo, a.logo:hover {
     color: rgba(0, 0, 0, 0.9);
 }
 
-.navbar-light .navbar-text a:hover, .navbar-light .navbar-text a:focus {
+.navbar-light .navbar-text a:hover,
+.navbar-light .navbar-text a:focus {
     color: rgba(0, 0, 0, 0.9);
 }
 
@@ -422,7 +438,8 @@ a.logo, a.logo:hover {
     color: #fff;
 }
 
-.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
+.navbar-dark .navbar-brand:hover,
+.navbar-dark .navbar-brand:focus {
     color: #fff;
 }
 
@@ -430,7 +447,8 @@ a.logo, a.logo:hover {
     color: rgba(255, 255, 255, 0.5);
 }
 
-.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
     color: rgba(255, 255, 255, 0.75);
 }
 
@@ -462,10 +480,11 @@ a.logo, a.logo:hover {
     color: #fff;
 }
 
-.navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
+.navbar-dark .navbar-text a:hover,
+.navbar-dark .navbar-text a:focus {
     color: #fff;
 }
-.container-fluid.builder-container{
+.container-fluid.builder-container {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -486,7 +505,7 @@ a.logo, a.logo:hover {
 }
 
 //each CV has a model that will set the disposition of the element. Model are prefixed with mod-
-.mod-saly{
+.mod-saly {
     .header-wrapper {
         padding: 1rem;
         padding-top: 2rem;
@@ -501,7 +520,7 @@ a.logo, a.logo:hover {
             display: flex;
             justify-content: center;
             justify-items: center;
-            img{
+            img {
                 display: block;
                 width: 8rem;
                 min-height: 8rem;
@@ -515,20 +534,20 @@ a.logo, a.logo:hover {
             align-items: baseline;
             justify-content: center;
             margin-bottom: 15px;
-            h1{
+            h1 {
                 height: 5rem;
                 overflow: hidden;
                 line-height: 1.1;
                 margin: 0;
             }
-            h5{
+            h5 {
                 margin: 0;
             }
         }
         .contacts {
             position: relative;
             text-align: right;
-            ul{
+            ul {
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
@@ -536,9 +555,11 @@ a.logo, a.logo:hover {
                 margin: 0;
                 padding: 0;
                 height: 100%;
-                li{
+                li {
                     padding: 4px 0;
-                    .fa{margin-left: 7px}
+                    .fa {
+                        margin-left: 7px;
+                    }
                 }
             }
         }
@@ -554,7 +575,9 @@ a.logo, a.logo:hover {
     .r-column {
         padding-right: 0;
     }
-    .cv-bloc{margin-top: 2rem;}
+    .cv-bloc {
+        margin-top: 2rem;
+    }
     .cv-bloc .bloc-title {
         border-bottom: 2px solid;
         padding-left: 45px;
@@ -562,7 +585,7 @@ a.logo, a.logo:hover {
         font-weight: 700;
         text-transform: uppercase;
     }
-    .bloc-content{
+    .bloc-content {
         margin-left: 35px;
         padding: 1rem 0 0 0;
         display: flex;
@@ -575,7 +598,7 @@ a.logo, a.logo:hover {
             border-left: 3px solid;
             position: relative;
             &:before {
-                content: '';
+                content: "";
                 display: block;
                 border: 4px solid;
                 width: 1.3rem;
@@ -591,7 +614,9 @@ a.logo, a.logo:hover {
                 padding: 0;
                 display: flex;
                 justify-content: space-between;
-                li {padding: 0;}
+                li {
+                    padding: 0;
+                }
             }
             h4 {
                 color: #2f2f2f;
@@ -600,20 +625,20 @@ a.logo, a.logo:hover {
             .company-description {
                 line-height: 1.2;
                 position: relative;
-                padding: 1rem 0 .2rem;
+                padding: 1rem 0 0.2rem;
             }
             .experience-tasks {
                 padding: 0.4rem 0;
-                ul{
+                ul {
                     list-style: none;
                     margin: 0;
                     font-size: small;
                     padding: 0;
-                    li{
+                    li {
                         position: relative;
                         padding-left: 15px;
                         &:before {
-                            content: '';
+                            content: "";
                             display: inline-block;
                             width: 4px;
                             height: 1px;
@@ -627,15 +652,17 @@ a.logo, a.logo:hover {
             }
         }
     }
-    .educations-wrapper{
-        .educations-blocs{
+    .educations-wrapper {
+        .educations-blocs {
             padding: 1rem 0 0;
-            ul{position: relative;
+            ul {
+                position: relative;
                 line-height: 1;
             }
         }
     }
-    .skills-wrapper{position: relative;
+    .skills-wrapper {
+        position: relative;
         .skills-blocs ul {
             padding: 0;
             list-style: none;
@@ -644,16 +671,16 @@ a.logo, a.logo:hover {
             justify-content: flex-start;
             width: 100%;
             overflow: hidden;
-            li{
-                padding: .4rem .6rem;
-                margin: .2rem;
+            li {
+                padding: 0.4rem 0.6rem;
+                margin: 0.2rem;
                 border-radius: 9px;
                 border: 1px solid;
             }
         }
     }
-    .realisations-wrapper{
-        ul{
+    .realisations-wrapper {
+        ul {
             list-style: none;
             padding: 0;
             margin: 0;
@@ -661,7 +688,7 @@ a.logo, a.logo:hover {
             flex-direction: column;
         }
     }
-    .languages-wrapper{
+    .languages-wrapper {
         ul {
             list-style: none;
             padding: 0;
@@ -698,8 +725,8 @@ a.logo, a.logo:hover {
             padding: 0;
             overflow: hidden;
             li {
-                margin: .4rem;
-                padding: .2rem .6rem;
+                margin: 0.4rem;
+                padding: 0.2rem 0.6rem;
                 border: 2px solid;
                 border-radius: 6px;
             }
@@ -708,11 +735,16 @@ a.logo, a.logo:hover {
 }
 //All classes tat will deal with colors are set in this section. They all start with tm as in theme
 //They are supposed to set font color, background, border color...
-.tm-dark{
-    h1, h2, h3, h4, h5, h6{
+.tm-dark {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         color: #000;
     }
-    .name-profession h5{
+    .name-profession h5 {
         color: #656565;
     }
     .experience {
@@ -721,14 +753,19 @@ a.logo, a.logo:hover {
             border-color: #000;
             background: #fff;
         }
-        h3{ color: #000000;}
-        h4{color: #2f2f2f;}
+        h3 {
+            color: #000000;
+        }
+        h4 {
+            color: #2f2f2f;
+        }
         .company-description {
             color: #656565;
         }
-        .experience-tasks{background: #fdfdfd;
-            ul{
-                li{
+        .experience-tasks {
+            background: #fdfdfd;
+            ul {
+                li {
                     &:before {
                         border-color: #000;
                     }
@@ -736,8 +773,8 @@ a.logo, a.logo:hover {
             }
         }
     }
-    .skills-wrapper{
-        li{
+    .skills-wrapper {
+        li {
             border-color: #000;
             background: #000;
             color: #fff;
@@ -748,16 +785,16 @@ a.logo, a.logo:hover {
             li {
                 border-color: #656565;
                 color: #000;
-                font-size: .8rem;
+                font-size: 0.8rem;
             }
         }
     }
-    .languages-wrapper{
+    .languages-wrapper {
         .lang-level {
             background: #fff;
             .level {
                 border-color: #000;
-                &.active{
+                &.active {
                     background: #000;
                 }
             }
@@ -765,18 +802,23 @@ a.logo, a.logo:hover {
     }
 }
 //All class that will managed font police are st bellow. They all start with fp
-.fp-roboto{
-    font-family: 'Roboto', sans-serif;
-    h1, h2, h3, h4, h5, h6{
-        font-family: 'Roboto', sans-serif;
+.fp-roboto {
+    font-family: "Roboto", sans-serif;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Roboto", sans-serif;
         text-transform: none;
     }
-    h1{
+    h1 {
         font-size: 2.4rem;
         font-weight: 400;
         letter-spacing: 1px;
     }
-    h5{
+    h5 {
         font-size: x-large;
         font-weight: normal;
         letter-spacing: 1px;
@@ -786,8 +828,8 @@ a.logo, a.logo:hover {
         font-weight: 100;
         line-height: 1.5;
     }
-    .cv-bloc .bloc-title{
-        font-family: 'Roboto', sans-serif;
+    .cv-bloc .bloc-title {
+        font-family: "Roboto", sans-serif;
     }
     h3 {
         font-size: 1.3rem;
@@ -800,10 +842,10 @@ a.logo, a.logo:hover {
         font-weight: 400;
     }
     ul.date-place {
-        font-size: .9rem;
+        font-size: 0.9rem;
         font-weight: 300;
     }
-    .company-description{
+    .company-description {
         font-size: 0.8rem;
         line-height: 1.4;
         font-weight: 100;
@@ -811,29 +853,29 @@ a.logo, a.logo:hover {
         text-align: justify;
         font-style: italic;
     }
-    .educations-wrapper{
-        h3{
+    .educations-wrapper {
+        h3 {
             font-size: 1.4rem;
             line-height: 1;
         }
-        h4{
+        h4 {
             font-size: 1.2rem;
-            margin-bottom: .3rem;
+            margin-bottom: 0.3rem;
         }
         .date-place {
-            font-size: .9rem;
+            font-size: 0.9rem;
             letter-spacing: 1px;
             color: #656565;
         }
     }
-    .skills-wrapper{
+    .skills-wrapper {
         li {
             line-height: 1.5;
-            font-size: .7rem;
+            font-size: 0.7rem;
             text-transform: none;
         }
     }
-    .realisations-wrapper{
+    .realisations-wrapper {
         ul {
             li {
                 font-size: 1.1rem;
@@ -845,7 +887,7 @@ a.logo, a.logo:hover {
     .interests-wrapper {
         ul {
             li {
-                font-size: .8rem;
+                font-size: 0.8rem;
             }
         }
     }

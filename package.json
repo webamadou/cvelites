@@ -12,8 +12,11 @@
     "dependencies": {
         "@babel/plugin-proposal-class-properties": "^7.5.0",
         "@fortawesome/fontawesome-free": "^5.9.0",
+        "@progress/kendo-drawing": "^1.5.12",
+        "@progress/kendo-react-pdf": "^3.2.2",
         "bootstrap": "4.3.1",
         "breakpoints-js": "^1.0.6",
+        "canvg": "^2.0.0",
         "chart.js": "2.8.0",
         "datatables.net-bs4": "1.10.19",
         "jquery": "^3.4.1",

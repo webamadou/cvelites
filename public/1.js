@@ -1047,8 +1047,6 @@ function (_Component) {
           hobbies = resumes.hobbies,
           languages = resumes.languages;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container-fluid builder-container pt-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container resume-wrapper mod-saly tm-dark fp-roboto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-wrapper row mt-4"
@@ -1107,7 +1105,7 @@ function (_Component) {
         className: "bloc-title"
       }, "INTERESTS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cv_components_Hobbies__WEBPACK_IMPORTED_MODULE_9__["default"], {
         hobbies: hobbies
-      })))))));
+      }))))));
     }
   }]);
 
